@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SearchInput } from '../components';
+import { BaseInput } from '../components';
 import styles from '../styles/topNavigation.module.scss';
 
 export const TopNavigation = () => {
@@ -16,7 +16,7 @@ export const TopNavigation = () => {
           </li>
         </ul>
       </nav>
-      <SearchInput />
+      <BaseInput placeholder="Поиск..." type="text" />
     </div>
   );
 };

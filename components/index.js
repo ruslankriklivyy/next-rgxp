@@ -1,4 +1,5 @@
-export { Header as Header } from './Header';
-export { TopNavigation as TopNavigation } from './TopNavigation';
-export { SearchInput as SearchInput } from './SearchInput';
-export { Lists as Lists } from './Lists';
+export { Header } from './Header';
+export { TopNavigation } from './TopNavigation';
+export { BaseInput } from './BaseInput';
+export { Lists } from './Lists';
+export { ListsItem } from './ListsItem';
