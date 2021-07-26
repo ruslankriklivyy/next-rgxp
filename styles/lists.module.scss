@@ -148,10 +148,8 @@
 }
 .itemInputCopy {
   input {
-    &:first-child {
-      background: rgba($color: #82f382, $alpha: 0.5);
-      cursor: pointer;
-    }
+    background: rgba($color: #82f382, $alpha: 0.5);
+    cursor: copy;
   }
 }
 .itemBox {
