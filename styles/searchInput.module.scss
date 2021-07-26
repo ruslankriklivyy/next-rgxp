@@ -1,0 +1,15 @@
+.searchInput {
+  background: #fff;
+  border: 1px solid #eeeeef;
+  border-radius: 50px;
+  height: 39px;
+  font-size: 14px;
+  outline: none;
+  padding: 0 20px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  transition: all 0.2s ease;
+  &:focus {
+    border-color: #d8d8dd;
+  }
+}
