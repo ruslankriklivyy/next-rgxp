@@ -1,14 +1,24 @@
 import React from 'react';
-import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next';
+import { GetServerSideProps } from 'next';
 import { AppMain } from '../../components';
 import { IListPattern } from '../../interfaces';
+import { RootState } from '../../store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPatternsItems } from '../../store/slices/patternsSlice';
 
 interface IMail {
   data: IListPattern[];
 }
 
 const Mail: React.FC<IMail> = ({ data }) => {
-  return <AppMain data={data} />;
+  const { items, searchQuery } = useSelector((state: RootState) => state.patterns);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(setPatternsItems(data));
+  }, [dispatch, data, searchQuery]);
+
+  return <AppMain data={items} />;
 };
 
 export default Mail;

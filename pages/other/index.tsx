@@ -2,13 +2,23 @@ import React from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { AppMain } from '../../components';
 import { IListPattern } from '../../interfaces';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { setPatternsItems } from '../../store/slices/patternsSlice';
 
 interface IOther {
   data: IListPattern[];
 }
 
 const Other: React.FC<IOther> = ({ data }) => {
-  return <AppMain data={data} />;
+  const { items, searchQuery } = useSelector((state: RootState) => state.patterns);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(setPatternsItems(data));
+  }, [dispatch, data, searchQuery]);
+
+  return <AppMain data={items} />;
 };
 
 export default Other;

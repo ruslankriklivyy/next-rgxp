@@ -17,16 +17,7 @@ const Home: React.FC<IHome> = ({ data }) => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    if (searchQuery !== '') {
-      const newData = data.filter(
-        (item) =>
-          item.title.en.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
-          item.title.ru.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0,
-      );
-      dispatch(setPatternsItems(newData));
-    } else {
-      dispatch(setPatternsItems(data));
-    }
+    dispatch(setPatternsItems(data));
   }, [dispatch, data, searchQuery]);
 
   return (
