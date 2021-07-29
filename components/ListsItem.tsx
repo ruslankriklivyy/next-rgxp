@@ -7,8 +7,23 @@ import okSvg from '../assets/img/ok.svg';
 import checkSvg from '../assets/img/check.svg';
 import nocheckSvg from '../assets/img/cancel.svg';
 import infoSvg from '../assets/img/info.svg';
+import { IListItemTitleAndDescr } from '../interfaces';
 
-export const ListsItem = ({ title, description, pattern, placeholder, tags }: any) => {
+interface IListItem {
+  title: IListItemTitleAndDescr;
+  description: IListItemTitleAndDescr;
+  pattern: string;
+  placeholder: string;
+  tags: string[];
+}
+
+export const ListsItem: React.FC<IListItem> = ({
+  title,
+  description,
+  pattern,
+  placeholder,
+  tags,
+}) => {
   const [copyStatus, setCopyStatus] = React.useState(false);
   const [validateValue, setValidateValue] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
@@ -58,7 +73,7 @@ export const ListsItem = ({ title, description, pattern, placeholder, tags }: an
         <h4 className={styles.itemName}>{title.en}</h4>
         <div className={styles.itemInfo}>
           <Image src={infoSvg} alt="info svg" />
-          <div className={styles.itemAbout}>Checking email for correctness</div>
+          <div className={styles.itemAbout}>{description.en}</div>
         </div>
       </div>
       <hr className={styles.itemLine} />
@@ -92,15 +107,17 @@ export const ListsItem = ({ title, description, pattern, placeholder, tags }: an
           )}
           <BaseInput
             type="text"
-            placeholder="my@gmail.com"
+            placeholder={placeholder}
             value={inputValue}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputValue(e.target.value)}
           />
         </div>
         <div className={styles.tags}>
-          <a href="/2">e-mail</a>
-          <a href="/2">symbol</a>
-          <a href="/2">mail</a>
+          {tags.map((tag: string) => (
+            <a href="/2" key={tag}>
+              {tag}
+            </a>
+          ))}
         </div>
         {validateValue && <div className={styles.itemValidateCorrect}>{inputValue}</div>}
       </div>
