@@ -1,10 +1,20 @@
 import React from 'react';
 import Link from 'next/link';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { BaseInput } from '../components';
 import styles from '../styles/topNavigation.module.scss';
+import { RootState } from '../store/store';
+import { setSearchQuery } from '../store/slices/patternsSlice';
 
-export const TopNavigation = () => {
+export const TopNavigation = React.memo(() => {
+  const { searchQuery } = useSelector((state: RootState) => state.patterns);
+  const dispatch = useDispatch();
+
+  const handleInputValue = (val: String) => {
+    dispatch(setSearchQuery(val));
+  };
+
   const menuArr = [
     { id: 0, ru: 'Почта', en: 'mail' },
     { id: 1, ru: 'Цифры', en: 'numbers' },
@@ -22,7 +32,12 @@ export const TopNavigation = () => {
           ))}
         </ul>
       </nav>
-      <BaseInput placeholder="Поиск..." type="text" />
+      <BaseInput
+        placeholder="Поиск..."
+        type="text"
+        value={searchQuery}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputValue(e.target.value)}
+      />
     </div>
   );
-};
+});

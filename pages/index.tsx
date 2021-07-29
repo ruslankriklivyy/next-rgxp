@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import React from 'react';
 import { GetServerSideProps } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,10 +13,21 @@ interface IHome {
 }
 
 const Home: React.FC<IHome> = ({ data }) => {
-  const { items } = useSelector((state: RootState) => state.patterns);
+  const { items, searchQuery } = useSelector((state: RootState) => state.patterns);
   const dispatch = useDispatch();
 
-  dispatch(setPatternsItems(data));
+  React.useEffect(() => {
+    if (searchQuery !== '') {
+      const newData = data.filter(
+        (item) =>
+          item.title.en.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0 ||
+          item.title.ru.toLowerCase().indexOf(searchQuery.toLowerCase()) >= 0,
+      );
+      dispatch(setPatternsItems(newData));
+    } else {
+      dispatch(setPatternsItems(data));
+    }
+  }, [dispatch, data, searchQuery]);
 
   return (
     <div className="container">

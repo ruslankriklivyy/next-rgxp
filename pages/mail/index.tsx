@@ -1,20 +1,19 @@
 import React from 'react';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { Header, Lists, TopNavigation } from '../../components';
+import { GetServerSideProps, NextApiRequest, NextApiResponse } from 'next';
+import { AppMain } from '../../components';
+import { IListPattern } from '../../interfaces';
 
-const Mail = ({ data }: any) => {
-  return (
-    <div className="container">
-      <Header />
-      <TopNavigation />
-      <Lists data={data} />
-    </div>
-  );
+interface IMail {
+  data: IListPattern[];
+}
+
+const Mail: React.FC<IMail> = ({ data }) => {
+  return <AppMain data={data} />;
 };
 
 export default Mail;
 
-export async function getServerSideProps(req: NextApiRequest, res: NextApiResponse<any>) {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const dataJSON = await fetch('https://60feed9f257411001707883e.mockapi.io/mail');
   const data = await dataJSON.json();
 
@@ -23,4 +22,4 @@ export async function getServerSideProps(req: NextApiRequest, res: NextApiRespon
       data,
     }, // will be passed to the page component as props
   };
-}
+};

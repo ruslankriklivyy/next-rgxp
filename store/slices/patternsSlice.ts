@@ -1,13 +1,14 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IListPattern } from '../../interfaces';
-import type { RootState, AppThunk } from '../store';
 
 interface InitialState {
   items: IListPattern[];
+  searchQuery: String;
 }
 
 const initialState: InitialState = {
   items: [],
+  searchQuery: '',
 };
 
 export const patternsSlice = createSlice({
@@ -17,8 +18,11 @@ export const patternsSlice = createSlice({
     setPatternsItems: (state, action: PayloadAction<IListPattern[]>) => {
       state.items = action.payload;
     },
+    setSearchQuery: (state, action: PayloadAction<String>) => {
+      state.searchQuery = action.payload;
+    },
   },
 });
 
-export const { setPatternsItems } = patternsSlice.actions;
+export const { setPatternsItems, setSearchQuery } = patternsSlice.actions;
 export default patternsSlice.reducer;

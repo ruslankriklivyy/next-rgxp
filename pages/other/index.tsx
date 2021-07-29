@@ -1,15 +1,14 @@
 import React from 'react';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Header, Lists, TopNavigation } from '../../components';
+import { AppMain } from '../../components';
+import { IListPattern } from '../../interfaces';
 
-const Other = ({ data }: any) => {
-  return (
-    <div className="container">
-      <Header />
-      <TopNavigation />
-      <Lists data={data} />
-    </div>
-  );
+interface IOther {
+  data: IListPattern[];
+}
+
+const Other: React.FC<IOther> = ({ data }) => {
+  return <AppMain data={data} />;
 };
 
 export default Other;

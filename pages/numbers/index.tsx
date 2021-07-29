@@ -1,20 +1,19 @@
 import React from 'react';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { Header, Lists, TopNavigation } from '../../components';
+import { GetServerSideProps } from 'next';
+import { AppMain } from '../../components';
+import { IListPattern } from '../../interfaces';
 
-const Numbers = ({ data }: any) => {
-  return (
-    <div className="container">
-      <Header />
-      <TopNavigation />
-      <Lists data={data} />
-    </div>
-  );
+interface INumbers {
+  data: IListPattern[];
+}
+
+const Numbers: React.FC<INumbers> = ({ data }) => {
+  return <AppMain data={data} />;
 };
 
 export default Numbers;
 
-export async function getServerSideProps(req: NextApiRequest, res: NextApiResponse<any>) {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const dataJSON = await fetch('https://60feed9f257411001707883e.mockapi.io/numbers');
   const data = await dataJSON.json();
 
@@ -23,4 +22,4 @@ export async function getServerSideProps(req: NextApiRequest, res: NextApiRespon
       data,
     }, // will be passed to the page component as props
   };
-}
+};
