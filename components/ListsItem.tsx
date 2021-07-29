@@ -8,7 +8,7 @@ import checkSvg from '../assets/img/check.svg';
 import nocheckSvg from '../assets/img/cancel.svg';
 import infoSvg from '../assets/img/info.svg';
 
-export const ListsItem = () => {
+export const ListsItem = ({ title, description, pattern, placeholder, tags }: any) => {
   const [copyStatus, setCopyStatus] = React.useState(false);
   const [validateValue, setValidateValue] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
@@ -27,11 +27,17 @@ export const ListsItem = () => {
   };
 
   const handleInputValue = (value: string) => {
-    if (
-      /^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/gm.test(
-        value,
-      )
-    ) {
+    const newPatter = pattern.replace(/(\/\/)/gm, '/');
+    const flagMatch = newPatter.match('/([gimy]{1,4})$');
+    const flag = flagMatch ? flagMatch?.[1] : null;
+    let patternValue = flag ? newPatter.replace(flag, '') : newPatter;
+    if (patternValue[0] === '/' && patternValue[patternValue.length - 1] === '/') {
+      patternValue = patternValue.slice(1).slice(0, -1);
+    }
+    const exp = new RegExp(patternValue, flag || '');
+    const matches = value.match(exp);
+    const check = [...(matches || [])].filter((v) => v);
+    if (check.length !== 0) {
       setValidateValue(true);
     } else {
       setValidateValue(false);
@@ -49,7 +55,7 @@ export const ListsItem = () => {
   return (
     <div className={styles.listsItem} ref={listItemRef}>
       <div className={styles.itemTop}>
-        <h4 className={styles.itemName}>E-mail format</h4>
+        <h4 className={styles.itemName}>{title.en}</h4>
         <div className={styles.itemInfo}>
           <Image src={infoSvg} alt="info svg" />
           <div className={styles.itemAbout}>Checking email for correctness</div>
@@ -65,7 +71,7 @@ export const ListsItem = () => {
         <div className={styles.itemInputCopy}>
           <BaseInput
             onClick={(e: React.ChangeEvent<HTMLInputElement>) => onSetCopy(e)}
-            defaultValue="/^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/gm"
+            defaultValue={pattern.replace(/(\/\/)/gm, '/')}
             type="text"
             readOnly
           />

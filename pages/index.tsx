@@ -1,7 +1,9 @@
 import Head from 'next/head';
+import { NextApiRequest, NextApiResponse } from 'next';
+
 import { Header, Lists, TopNavigation } from '../components';
 
-export default function Home() {
+export default function Home({ data }: any) {
   return (
     <div className="container">
       <Head>
@@ -17,7 +19,18 @@ export default function Home() {
       </Head>
       <Header />
       <TopNavigation />
-      <Lists />
+      <Lists data={data} />
     </div>
   );
+}
+
+export async function getServerSideProps(req: NextApiRequest, res: NextApiResponse<any>) {
+  const dataJSON = await fetch('https://60feed9f257411001707883e.mockapi.io/all');
+  const data = await dataJSON.json();
+
+  return {
+    props: {
+      data,
+    }, // will be passed to the page component as props
+  };
 }
