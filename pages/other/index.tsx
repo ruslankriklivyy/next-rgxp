@@ -18,7 +18,7 @@ const Other: React.FC<IOther> = ({ data }) => {
     dispatch(setPatternsItems(data));
   }, [dispatch, data, searchQuery]);
 
-  return <AppMain data={items} />;
+  return <AppMain data={items} name={'Next RGXP | Others'} />;
 };
 
 export default Other;

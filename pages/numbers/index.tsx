@@ -18,7 +18,7 @@ const Numbers: React.FC<INumbers> = ({ data }) => {
     dispatch(setPatternsItems(data));
   }, [dispatch, data, searchQuery]);
 
-  return <AppMain data={items} />;
+  return <AppMain data={items} name={'Next RGXP | Numbers'} />;
 };
 
 export default Numbers;

@@ -68,8 +68,10 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   margin-top: 15px;
-  a {
+  button {
     display: inline-block;
+    border: none;
+    cursor: pointer;
     flex: 1 1;
     text-align: center;
     border-radius: 5px;

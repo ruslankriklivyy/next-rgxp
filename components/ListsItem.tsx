@@ -8,6 +8,8 @@ import checkSvg from '../assets/img/check.svg';
 import nocheckSvg from '../assets/img/cancel.svg';
 import infoSvg from '../assets/img/info.svg';
 import { IListItemTitleAndDescr } from '../interfaces';
+import { useDispatch } from 'react-redux';
+import { setPatternsItemsByType } from '../store/slices/patternsSlice';
 
 interface IListItem {
   title: IListItemTitleAndDescr;
@@ -28,6 +30,7 @@ export const ListsItem: React.FC<IListItem> = ({
   const [validateValue, setValidateValue] = React.useState(false);
   const [inputValue, setInputValue] = React.useState('');
   const listItemRef = React.useRef<HTMLInputElement>(null);
+  const dispatch = useDispatch();
 
   const handleOutsideClick = React.useCallback((e: any) => {
     const path = e.path || (e.composedPath && e.composedPath());
@@ -58,6 +61,10 @@ export const ListsItem: React.FC<IListItem> = ({
       setValidateValue(false);
     }
     setInputValue(value);
+  };
+
+  const selectPatternType = (type: string) => {
+    dispatch(setPatternsItemsByType(type));
   };
 
   React.useEffect(() => {
@@ -114,9 +121,9 @@ export const ListsItem: React.FC<IListItem> = ({
         </div>
         <div className={styles.tags}>
           {tags.map((tag: string) => (
-            <a href="/2" key={tag}>
+            <button onClick={() => selectPatternType(tag)} key={tag}>
               {tag}
-            </a>
+            </button>
           ))}
         </div>
         {validateValue && <div className={styles.itemValidateCorrect}>{inputValue}</div>}

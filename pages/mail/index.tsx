@@ -18,7 +18,7 @@ const Mail: React.FC<IMail> = ({ data }) => {
     dispatch(setPatternsItems(data));
   }, [dispatch, data, searchQuery]);
 
-  return <AppMain data={items} />;
+  return <AppMain data={items} name={'Next RGXP | Mail'} />;
 };
 
 export default Mail;

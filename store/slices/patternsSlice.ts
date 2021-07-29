@@ -3,7 +3,7 @@ import { IListPattern } from '../../interfaces';
 
 interface InitialState {
   items: IListPattern[];
-  searchQuery: String;
+  searchQuery: string;
 }
 
 const initialState: InitialState = {
@@ -27,11 +27,15 @@ export const patternsSlice = createSlice({
         state.items = action.payload;
       }
     },
-    setSearchQuery: (state, action: PayloadAction<String>) => {
+    setSearchQuery: (state, action: PayloadAction<string>) => {
       state.searchQuery = action.payload;
+    },
+    setPatternsItemsByType: (state, action: PayloadAction<string>) => {
+      const newItems = state.items.filter((item) => item.tags.includes(action.payload));
+      state.items = newItems;
     },
   },
 });
 
-export const { setPatternsItems, setSearchQuery } = patternsSlice.actions;
+export const { setPatternsItems, setSearchQuery, setPatternsItemsByType } = patternsSlice.actions;
 export default patternsSlice.reducer;
