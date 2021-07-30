@@ -6,7 +6,7 @@ import { Lists } from '../../components';
 import { IListPattern } from '../../interfaces';
 import { RootState } from '../../store/store';
 import { setPatternsItems } from '../../store/slices/patternsSlice';
-import { Layout } from '../../layouts/layout';
+import { Layout } from '../../layouts/Layout';
 
 interface IOther {
   data: IListPattern[];

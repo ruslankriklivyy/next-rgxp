@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IListPattern } from '../../interfaces';
 import { RootState } from '../../store/store';
 import { setPatternsItems } from '../../store/slices/patternsSlice';
-import { Layout } from '../../layouts/layout';
+import { Layout } from '../../layouts/Layout';
 import { Lists } from '../../components';
 
 interface IMail {

@@ -5,7 +5,7 @@ import { IListPattern } from '../../interfaces';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { setPatternsItems } from '../../store/slices/patternsSlice';
-import { Layout } from '../../layouts/layout';
+import { Layout } from '../../layouts/Layout';
 
 interface INumbers {
   data: IListPattern[];
