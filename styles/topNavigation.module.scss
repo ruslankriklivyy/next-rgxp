@@ -6,10 +6,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 780px) {
+    flex-direction: column;
+    padding-bottom: 20px;
+    input {
+      width: 100%;
+    }
+  }
 }
 .menu {
   display: flex;
   align-items: center;
+  @media (max-width: 390px) {
+    flex-direction: column;
+  }
 }
 .menuItem {
   a {
