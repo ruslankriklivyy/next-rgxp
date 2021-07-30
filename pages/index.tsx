@@ -6,7 +6,7 @@ import { Lists } from '../components';
 import { IListPattern } from '../interfaces';
 import { setPatternsItems } from '../store/slices/patternsSlice';
 import { RootState } from '../store/store';
-import { Layout } from '../layouts/layout';
+import { Layout } from '../layouts/Layout';
 
 interface IHome {
   data: IListPattern[];
