@@ -11,7 +11,7 @@ export const TopNavigation = React.memo(() => {
   const { searchQuery } = useSelector((state: RootState) => state.patterns);
   const dispatch = useDispatch();
 
-  const handleInputValue = (val: String) => {
+  const handleInputValue = (val: string) => {
     dispatch(setSearchQuery(val));
   };
 
