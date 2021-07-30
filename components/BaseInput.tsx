@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/searchInput.module.scss';
 
 interface IBaseInput {
-  props: React.PropsWithChildren;
+  props: any;
 }
 
 export const BaseInput: React.FC<IBaseInput> = (props) => {
