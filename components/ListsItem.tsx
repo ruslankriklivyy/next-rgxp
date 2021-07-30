@@ -39,8 +39,8 @@ export const ListsItem: React.FC<IListItem> = ({
     }
   }, []);
 
-  const onSetCopy = (e: React.ChangeEvent<HTMLInputElement>) => {
-    navigator.clipboard.writeText(e.target.value);
+  const onSetCopy = () => {
+    navigator.clipboard.writeText(pattern.replace(/(\/\/)/gm, '/'));
     setCopyStatus(true);
   };
 
@@ -92,7 +92,7 @@ export const ListsItem: React.FC<IListItem> = ({
         )}
         <div className={styles.itemInputCopy}>
           <BaseInput
-            onClick={(e: React.ChangeEvent<HTMLInputElement>) => onSetCopy(e)}
+            onClick={onSetCopy}
             defaultValue={pattern.replace(/(\/\/)/gm, '/')}
             type="text"
             readOnly
