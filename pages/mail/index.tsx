@@ -1,10 +1,12 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import { AppMain } from '../../components';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { IListPattern } from '../../interfaces';
 import { RootState } from '../../store/store';
-import { useDispatch, useSelector } from 'react-redux';
 import { setPatternsItems } from '../../store/slices/patternsSlice';
+import { Layout } from '../../layouts/layout';
+import { Lists } from '../../components';
 
 interface IMail {
   data: IListPattern[];
@@ -18,7 +20,11 @@ const Mail: React.FC<IMail> = ({ data }) => {
     dispatch(setPatternsItems(data));
   }, [dispatch, data, searchQuery]);
 
-  return <AppMain data={items} name={'Next RGXP | Mail'} />;
+  return (
+    <Layout name={'Next RGXP | Mail'}>
+      <Lists data={items} />
+    </Layout>
+  );
 };
 
 export default Mail;

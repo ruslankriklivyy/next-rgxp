@@ -1,16 +1,13 @@
 import Head from 'next/head';
 import React from 'react';
-import { Lists } from '.';
-import { IListPattern } from '../interfaces';
-import { Header } from './Header';
-import { TopNavigation } from './TopNavigation';
+import { Header, TopNavigation } from '../components';
 
-interface IAppMain {
-  data: IListPattern[];
+interface ILayout {
+  children: React.ReactNode;
   name: String;
 }
 
-export const AppMain: React.FC<IAppMain> = ({ data, name }) => {
+export const Layout: React.FC<ILayout> = ({ children, name }) => {
   return (
     <div className="container">
       <Head>
@@ -20,7 +17,7 @@ export const AppMain: React.FC<IAppMain> = ({ data, name }) => {
       </Head>
       <Header />
       <TopNavigation />
-      <Lists data={data} />
+      {children}
     </div>
   );
 };

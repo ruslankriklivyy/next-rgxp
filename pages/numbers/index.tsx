@@ -1,10 +1,11 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import { AppMain } from '../../components';
+import { Lists } from '../../components';
 import { IListPattern } from '../../interfaces';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { setPatternsItems } from '../../store/slices/patternsSlice';
+import { Layout } from '../../layouts/layout';
 
 interface INumbers {
   data: IListPattern[];
@@ -18,7 +19,11 @@ const Numbers: React.FC<INumbers> = ({ data }) => {
     dispatch(setPatternsItems(data));
   }, [dispatch, data, searchQuery]);
 
-  return <AppMain data={items} name={'Next RGXP | Numbers'} />;
+  return (
+    <Layout name={'Next RGXP | Numbers'}>
+      <Lists data={items} />
+    </Layout>
+  );
 };
 
 export default Numbers;
