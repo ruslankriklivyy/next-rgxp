@@ -11,7 +11,7 @@ interface IList {
 export const Lists: React.FC<IList> = ({ data }) => {
   return (
     <div className={styles.lists}>
-      {data.map((item: any) => (
+      {data.map((item) => (
         <ListsItem key={item.id} {...item} />
       ))}
     </div>
