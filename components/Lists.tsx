@@ -1,8 +1,8 @@
 import React from 'react';
 
 import styles from '../styles/lists.module.scss';
-import { ListsItem } from '../components';
 import { IListPattern } from '../interfaces';
+import { ListsItem } from './ListsItem';
 
 interface IList {
   data: IListPattern[];

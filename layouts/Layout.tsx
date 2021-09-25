@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
-import { Header, TopNavigation } from '../components';
+import { Header } from '../components/Header';
+import { TopNavigation } from '../components/TopNavigation';
 
 interface ILayout {
   children: React.ReactNode;

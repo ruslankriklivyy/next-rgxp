@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 
-import { BaseInput } from '../components';
 import styles from '../styles/lists.module.scss';
 import okSvg from '../assets/img/ok.svg';
 import checkSvg from '../assets/img/check.svg';
@@ -10,6 +9,7 @@ import infoSvg from '../assets/img/info.svg';
 import { IListItemTitleAndDescr } from '../interfaces';
 import { useDispatch } from 'react-redux';
 import { setPatternsItemsByType } from '../store/slices/patternsSlice';
+import { BaseInput } from './BaseInput';
 
 interface IListItem {
   title: IListItemTitleAndDescr;

@@ -1,11 +1,11 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
-import { Lists } from '../../components';
 import { IListPattern } from '../../interfaces';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { setPatternsItems } from '../../store/slices/patternsSlice';
 import { Layout } from '../../layouts/Layout';
+import { Lists } from '../../components/Lists';
 
 interface INumbers {
   data: IListPattern[];

@@ -1,6 +1,6 @@
 .searchInput {
-  background: #fff;
-  border: 1px solid #eeeeef;
+  background: #20232a;
+  border: 1px solid rgba($color: #fff, $alpha: 0.6);
   border-radius: 50px;
   height: 39px;
   font-size: 14px;
@@ -8,7 +8,8 @@
   padding: 0 20px;
   font-family: 'Roboto', sans-serif;
   transition: all 0.2s ease;
+  color: #fff;
   &:focus {
-    border-color: #d8d8dd;
+    border-color: #fff;
   }
 }

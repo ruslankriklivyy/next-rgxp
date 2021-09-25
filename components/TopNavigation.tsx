@@ -2,10 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { BaseInput } from '../components';
 import styles from '../styles/topNavigation.module.scss';
 import { RootState } from '../store/store';
 import { setSearchQuery } from '../store/slices/patternsSlice';
+import { BaseInput } from './BaseInput';
 
 export const TopNavigation = React.memo(() => {
   const { searchQuery } = useSelector((state: RootState) => state.patterns);

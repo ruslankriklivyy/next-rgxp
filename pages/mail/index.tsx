@@ -6,7 +6,7 @@ import { IListPattern } from '../../interfaces';
 import { RootState } from '../../store/store';
 import { setPatternsItems } from '../../store/slices/patternsSlice';
 import { Layout } from '../../layouts/Layout';
-import { Lists } from '../../components';
+import { Lists } from '../../components/Lists';
 
 interface IMail {
   data: IListPattern[];

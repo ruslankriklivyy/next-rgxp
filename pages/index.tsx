@@ -2,11 +2,11 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Lists } from '../components';
 import { IListPattern } from '../interfaces';
 import { setPatternsItems } from '../store/slices/patternsSlice';
 import { RootState } from '../store/store';
 import { Layout } from '../layouts/Layout';
+import { Lists } from '../components/Lists';
 
 interface IHome {
   data: IListPattern[];
@@ -36,6 +36,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return {
     props: {
       data,
-    }, // will be passed to the page component as props
+    },
   };
 };
